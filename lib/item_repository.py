@@ -12,3 +12,7 @@ class ItemRepository():
             item = Item(row["id"], row["unit_price"], row["name"], row["quantity"])
             items.append(item)
         return items
+    
+    def create(self, item):
+        self.connection.execute("INSERT INTO items (unit_price, name, quantity) VALUES (%s, %s, %s)", [item.unit_price, item.name, item.quantity])
+        
