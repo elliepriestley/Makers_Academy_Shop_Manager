@@ -52,11 +52,11 @@ def test_create_method(db_connection):
 Test find_by_order method. When calling the find_by_order method and passing through an order id, a list will be returned containing all items on that particular order. 
 """
 
-# def test_find_by_order_method(db_connection):
-#     db_connection.seed("seeds/items_orders.sql")
-#     repository = ItemRepository(db_connection)
-#     assert repository.find_by_order(1) == [
-#         Item(1, 150.99, 'Mechanical Keyboard', 10),
-#         Item(6, 70, 'Keycap Switch Pack', 67),
-#         Item(9, 15.99, 'Laptop Case', 57)
-#     ]
+def test_find_by_order_method(db_connection):
+    db_connection.seed("seeds/items_orders.sql")
+    repository = ItemRepository(db_connection)
+    assert repository.find_by_order(1) == [
+        Item(1, 150.99, 'Mechanical Keyboard', 10),
+        Item(6, 70, 'Keycap Switch Pack', 67),
+        Item(9, 15.99, 'Laptop Case', 57)
+    ]

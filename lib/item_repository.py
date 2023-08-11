@@ -16,13 +16,12 @@ class ItemRepository():
     def create(self, item):
         self.connection.execute("INSERT INTO items (unit_price, name, quantity) VALUES (%s, %s, %s)", [item.unit_price, item.name, item.quantity])
         
-    # def find_by_order(self, order_id):
-    #     rows = self.connection.execute("SELECT (items.id, items.unit_price, items.name, items.quantity) FROM items JOIN items_orders ON items_orders.item_id = items.id JOIN orders ON orders.id = items_orders.order_id WHERE orders.id = %s" , [order_id])
-    #     items = []
-    #     for row in rows:
-    #         print(row)
-    #         item = Item(row['row'][0], row['row'][1], row['row'][2], row['row'][3])
-    #         print(item)
-    #         items.append(item)
-    #     return items
+    def find_by_order(self, order_id):
+        rows = self.connection.execute("SELECT (items.id, items.unit_price, items.name, items.quantity) FROM items JOIN items_orders ON items_orders.item_id = items.id JOIN orders ON orders.id = items_orders.order_id WHERE orders.id = %s" , [order_id])
+        items = []
+        for row in rows:
+            item = Item( int(row['row'][0]), float(row['row'][1]), row['row'][2], int(row['row'][3]))
+            print(item)
+            items.append(item)
+        return items
             
