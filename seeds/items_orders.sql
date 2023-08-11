@@ -30,13 +30,13 @@ CREATE TABLE items_orders (
     constraint fk_item foreign key(item_id) references items(id) ON DELETE CASCADE,
     constraint fk_order foreign key(order_id) references orders(id) ON DELETE CASCADE,
     PRIMARY KEY (item_id, order_id)
-)
+);
 
 INSERT INTO items (unit_price, name, quantity) VALUES (150.99, 'Mechanical Keyboard', 10);
 INSERT INTO items (unit_price, name, quantity) VALUES (429.99, 'Playstation 5', 5);
 INSERT INTO items (unit_price, name, quantity) VALUES (299.00, 'Samsung Monitor', 33);
 INSERT INTO items (unit_price, name, quantity) VALUES (170.50, 'Acer Laptop', 14);
-INSERT INTO items (unit_price, name, quantity) VALUES (15.99, 'Mobile Phone Screen Protector', 50)
+INSERT INTO items (unit_price, name, quantity) VALUES (15.99, 'Mobile Phone Screen Protector', 50);
 INSERT INTO items (unit_price, name, quantity) VALUES (70.00, 'Keycap Switch Pack', 67);
 INSERT INTO items (unit_price, name, quantity) VALUES (119.9, 'Kindle Paperwhite', 48);
 INSERT INTO items (unit_price, name, quantity) VALUES (350.00, 'Apple IPad', 5);
