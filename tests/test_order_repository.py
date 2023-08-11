@@ -37,3 +37,15 @@ def test_create_method(db_connection):
         Order(6, 'Josie McGoth', '28-04-2021'),
         Order(7, "Roy Miller", "03-06-2021")
     ]
+
+"""
+Test get items by order id. When we call find_by_item on an instance of Order repository, we will recieve back a list of all orders with that particular item id
+"""
+
+def test_find_by_item(db_connection):
+    db_connection.seed("seeds/items_orders.sql")
+    repository = OrderRepository(db_connection)
+    assert repository.find_by_item(9) == [
+        Order(1, "Ellie Priestley", "11-08-2023"),
+        Order(5, "Emily Smith", "17-03-2020")
+    ]
