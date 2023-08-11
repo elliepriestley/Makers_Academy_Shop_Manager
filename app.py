@@ -12,7 +12,7 @@ class Application():
         self.connection.seed("seeds/items_orders.sql")
 
     def run(self):
-        print(' \n Welcome to the shop management program! \n \n What would you like to do? \n * 1 - List all shop items \n * 2 - Create a new shop item \n * 3 - List all orders \n * 4 - Create a new order')
+        print(' \n Welcome to the shop management program! \n \n What would you like to do? \n * 1 - List all shop items \n * 2 - Create a new shop item \n * 3 - List all orders \n * 4 - Create a new order \n * 5 - List all orders containing a particular item \n * 6 - List all items from a particular order ')
         user_input = int(input())
         if user_input == 1:
             print('Here is a list of all shop items:')
@@ -44,8 +44,16 @@ class Application():
             orders = repository.all()
             for order in orders:
                 print(f"#{order.id} Customer Name: {order.customer_name}, Order Date: {order.order_date}")
+        elif user_input == 5:
+            input_item_id = int(input("Please enter item id:"))
+            print('The item is present in the following orders: \n')
+            repository = OrderRepository(self.connection).find_by_item(input_item_id)
+        elif user_input == 6:
+            input_order_id =int(input("Please enter order id:"))
+            print(f'The following items were included in order {input_order_id}: \n')
+            repository = ItemRepository(self.connection).find_by_order(input_order_id)
         else:
-            print("Invalid input, please enter a number prompt between 1 - 4")
+            print("Invalid input, please enter a number prompt between 1 - 6")
             app.run()
 
 
