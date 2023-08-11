@@ -1,4 +1,3 @@
-from lib.database_connection import DatabaseConnection
 from lib.item import Item
 
 class ItemRepository():
